@@ -10,7 +10,7 @@ const {
 
 router.get('/', getAllUsers);
 router.get('/:userId', getOneUser);
-router.get('/:userId/shows', getShowsByUser);
+router.get('/:userId/shows', getShowsWatchedByUser);
 router.put('/:userId/:showId', addShowToUser);
 
 module.exports = router;
