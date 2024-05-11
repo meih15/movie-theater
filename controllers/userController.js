@@ -53,7 +53,8 @@ const addShowToUser = async (req, res) => {
 
         if (user && show) {
             await user.addShow(show);
-            res.send('User has been successfully associated with show!')
+            await user.save();
+            res.status(200).json('User has been successfully associated with show!', user)
         }
 
     } catch (error) {
