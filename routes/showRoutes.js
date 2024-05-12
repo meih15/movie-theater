@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { check } = require('express-validator')
 
 const {
     getAllShows,
@@ -13,7 +14,11 @@ const {
 router.get('/', getAllShows);
 router.get('/:showId', getOneShow);
 router.get('/:showId/users', getAllUsersThatWatchedShow);
-router.put('/:showId', updateShowAvailability);
+router.put(
+    '/:showId/available',
+    [check('available').isBoolean().toBoolean()],
+    updateShowAvailability
+  );
 router.delete('/:showId', deleteShow);
 router.get('/genre', getShowsByGenre);
 
